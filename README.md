@@ -12,6 +12,7 @@ cannot be matched to GitHub issues.
 ## Installation and Setup
 
 1. Retrieve the scripts, and make a note of their location so they can be executed later.
+1. Run `make` in the scripts directory to build the ncsl tool.
 1. Make a copy of the `config-general` and `plan-general.csv` files in the scripts directory for each of your deployments 
 and targets; it is a good idea to name these something unique and clear for your deployment. These files should be saved 
 in the location where you wish to store the generated the metrics artifacts.
@@ -56,6 +57,17 @@ The commands below will create the files, and should be executed in the appropri
 **GitHub API Key**
 
 You must use a GitHub API key to allow these scripts access to your GitHub repo. 
+
+## Gathering SLOC Data
+
+The `sloc-calculator.py` tool can be used to gather the source lines of code (SLOC) for modules in a
+fprime deployment. This generated CSV file can then be used by the metrics report to graph SLOC per
+module and over time.
+
+Before using the `sloc-calculator.py` script, make sure to build the `ncsl` program by running `make`.
+
+To calculate the SLOC of a fprime deployment, build the deployment (vital for accurate autocode SLOC
+counts), then run `sloc-calculator.py -d <path to deployment> <calculated_results.csv>`.
 
 ## Metrics Report Execution
 
